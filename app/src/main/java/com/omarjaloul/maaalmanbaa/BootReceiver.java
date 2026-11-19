@@ -1,0 +1,5 @@
+package com.omarjaloul.maaalmanbaa;
+import android.content.*;
+public class BootReceiver extends BroadcastReceiver {
+ @Override public void onReceive(Context c,Intent i){if(Intent.ACTION_BOOT_COMPLETED.equals(i.getAction())){android.content.SharedPreferences p=c.getSharedPreferences(MainActivity.PREF,0);long start=p.getLong("start",MainActivity.DEFAULT_START),dur=p.getLong("duration",MainActivity.DEFAULT_DURATION),now=System.currentTimeMillis();long next=now<start?start:start+((now-start)/dur+1)*dur;long trigger=next-20*60*1000L;if(trigger>now){android.app.AlarmManager am=(android.app.AlarmManager)c.getSystemService(Context.ALARM_SERVICE);Intent a=new Intent(c,CycleAlarmReceiver.class);android.app.PendingIntent pi=android.app.PendingIntent.getBroadcast(c,1001,a,android.app.PendingIntent.FLAG_UPDATE_CURRENT|android.app.PendingIntent.FLAG_IMMUTABLE);if(android.os.Build.VERSION.SDK_INT>=23)am.setExactAndAllowWhileIdle(android.app.AlarmManager.RTC_WAKEUP,trigger,pi);else am.setExact(android.app.AlarmManager.RTC_WAKEUP,trigger,pi);}}}
+}
