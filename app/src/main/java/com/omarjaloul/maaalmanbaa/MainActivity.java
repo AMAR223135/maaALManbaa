@@ -24,7 +24,7 @@ public class MainActivity extends Activity {
     EditText daysInput, hoursInput, minutesInput;
     long startMillis, durationMillis;
     final SimpleDateFormat dateFmt = new SimpleDateFormat("dd/MM/yyyy", Locale.US);
-final SimpleDateFormat timeFmt = new SimpleDateFormat("hh:mm a", new Locale.US);
+final SimpleDateFormat timeFmt = new SimpleDateFormat("hh:mm a", new Locale("US"));
 final SimpleDateFormat dayFmt = new SimpleDateFormat("EEEE", new Locale("ar"));
 
     @Override public void onCreate(Bundle b) {
