@@ -13,6 +13,7 @@ import android.view.Gravity;
 import android.view.View;
 import android.widget.*;
 import java.text.SimpleDateFormat;
+import java.text.DecimalFormatSymbols;
 import java.util.*;
 
 public class MainActivity extends Activity {
@@ -22,9 +23,9 @@ public class MainActivity extends Activity {
     TextView nextDay, nextDate, nextTime, countdown, startText, durationText;
     EditText daysInput, hoursInput, minutesInput;
     long startMillis, durationMillis;
-    final SimpleDateFormat dateFmt = new SimpleDateFormat("dd/MM/yyyy", new Locale("ar"));
-    final SimpleDateFormat timeFmt = new SimpleDateFormat("hh:mm a", new Locale("ar"));
-    final SimpleDateFormat dayFmt = new SimpleDateFormat("EEEE", new Locale("ar"));
+    final SimpleDateFormat dateFmt = new SimpleDateFormat("dd/MM/yyyy", Locale.US);
+final SimpleDateFormat timeFmt = new SimpleDateFormat("hh:mm a", new Locale("ar"));
+final SimpleDateFormat dayFmt = new SimpleDateFormat("EEEE", new Locale("ar"));
 
     @Override public void onCreate(Bundle b) {
         super.onCreate(b);
@@ -64,7 +65,19 @@ public class MainActivity extends Activity {
         scroll.addView(root); setContentView(scroll);
     }
     android.graphics.drawable.GradientDrawable round(int color,int radius){android.graphics.drawable.GradientDrawable d=new android.graphics.drawable.GradientDrawable();d.setColor(color);d.setCornerRadius(dp(radius));d.setStroke(dp(1),Color.rgb(216,231,241));return d;}
-    EditText field(String value){EditText e=new EditText(this);e.setText(value);e.setTextSize(18);e.setInputType(2);e.setGravity(Gravity.CENTER);e.setSingleLine(true);e.setBackground(round(Color.WHITE,10));return e;}
+
+EditText field(String value){
+    EditText e = new EditText(this);
+    e.setTextLocale(Locale.US);
+    e.setText(value);
+    e.setTextSize(18);
+    e.setInputType(2);
+    e.setGravity(Gravity.CENTER);
+    e.setSingleLine(true);
+    e.setBackground(round(Color.WHITE,10));
+    return e;
+}
+
     void addField(LinearLayout parent,EditText e,String label){LinearLayout box=column();box.setPadding(dp(4),0,dp(4),0);box.addView(e,lp(-1,48));box.addView(text(label,12,Color.GRAY,false),lp(-1,25));parent.addView(box,new LinearLayout.LayoutParams(0,dp(78),1));}
     void pickStart(){Calendar c=Calendar.getInstance();c.setTimeInMillis(startMillis);new DatePickerDialog(this,(view,y,m,d)->{Calendar chosen=Calendar.getInstance();chosen.set(y,m,d);Calendar old=Calendar.getInstance();old.setTimeInMillis(startMillis);new TimePickerDialog(this,(tv,h,min)->{chosen.set(Calendar.HOUR_OF_DAY,h);chosen.set(Calendar.MINUTE,min);chosen.set(Calendar.SECOND,0);startMillis=chosen.getTimeInMillis();getSharedPreferences(PREF,0).edit().putLong("start",startMillis).apply();refresh();},old.get(Calendar.HOUR_OF_DAY),old.get(Calendar.MINUTE),false).show();},c.get(Calendar.YEAR),c.get(Calendar.MONTH),c.get(Calendar.DAY_OF_MONTH)).show();}
     void saveDuration(){try{long d=Long.parseLong(daysInput.getText().toString().trim());long h=Long.parseLong(hoursInput.getText().toString().trim());long m=Long.parseLong(minutesInput.getText().toString().trim());if(d<0||h<0||h>23||m<0||m>59||(d==0&&h==0&&m==0)){throw new Exception();}durationMillis=d*86400000L+h*3600000L+m*60000L;getSharedPreferences(PREF,0).edit().putLong("duration",durationMillis).apply();refresh();Toast.makeText(this,"تم حفظ مدة الدورة",Toast.LENGTH_SHORT).show();}catch(Exception ex){Toast.makeText(this,"أدخل مدة صحيحة: الساعات 0-23 والدقائق 0-59",Toast.LENGTH_LONG).show();}}
