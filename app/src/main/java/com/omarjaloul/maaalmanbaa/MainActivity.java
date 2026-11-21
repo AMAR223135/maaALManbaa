@@ -45,7 +45,7 @@ final SimpleDateFormat dayFmt = new SimpleDateFormat("EEEE", new Locale("ar"));
         ScrollView scroll=new ScrollView(this); scroll.setFillViewport(true);
         LinearLayout root=column(); root.setPadding(dp(20),dp(12),dp(20),dp(18)); root.setBackgroundColor(Color.rgb(241,248,253));
         ImageView logo=new ImageView(this); logo.setImageResource(R.drawable.logo); logo.setAdjustViewBounds(true); logo.setScaleType(ImageView.ScaleType.FIT_CENTER); root.addView(logo,lp(170,145));
-        TextView title=text("ماء المنبع",25,Color.rgb(5,61,111),true); root.addView(title,lp(-1,42));
+        TextView title=text("ماء المقطع",25,Color.rgb(5,61,111),true); root.addView(title,lp(-1,42));
         TextView label=text("الدور القادم",18,Color.rgb(54,83,105),true); root.addView(label,lp(-1,36));
         LinearLayout hero=column(); hero.setPadding(dp(12),dp(18),dp(12),dp(18)); hero.setBackground(round(Color.WHITE,18));
         nextDay=text("—",30,Color.rgb(0,112,184),true); hero.addView(nextDay,lp(-1,52));
@@ -61,7 +61,7 @@ final SimpleDateFormat dayFmt = new SimpleDateFormat("EEEE", new Locale("ar"));
         addField(fields,daysInput,"أيام"); addField(fields,hoursInput,"ساعات"); addField(fields,minutesInput,"دقائق"); root.addView(fields,lp(-1,80));
         Button save=new Button(this); save.setText("حفظ مدة الدورة وتحديث الإشعار"); save.setOnClickListener(v->saveDuration()); root.addView(save,lp(-1,54));
         TextView note=text("سيصلك إشعار قبل الدور القادم بـ 20 دقيقة",14,Color.rgb(38,91,126),false); note.setPadding(0,dp(10),0,dp(10)); root.addView(note,lp(-1,42));
-        TextView dev=text("تطوير وبرمجة: عمر جلول",13,Color.GRAY,false); root.addView(dev,lp(-1,36));
+        TextView dev=text("تطوير وبرمجة: بوضياف عمر جلول",13,Color.GRAY,false); root.addView(dev,lp(-1,36));
         scroll.addView(root); setContentView(scroll);
     }
     android.graphics.drawable.GradientDrawable round(int color,int radius){android.graphics.drawable.GradientDrawable d=new android.graphics.drawable.GradientDrawable();d.setColor(color);d.setCornerRadius(dp(radius));d.setStroke(dp(1),Color.rgb(216,231,241));return d;}
