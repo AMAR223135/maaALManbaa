@@ -1,4 +1,3 @@
-![شعار ماء المقطع](photo_2026-11-28_09-44-17.jpg)
 # 💧 ماء المقطع
 مرحباً بكم في الصفحة الرسمية لتطبيق ماء المقطع.
 
@@ -13,19 +12,7 @@
 - ⏰ المساعدة على عدم نسيان موعد الدور.
 ## 📱 تحميل التطبيق
 ## 📖 شرح طريقة استخدام التطبيق
-
-في الصورة التالية شرح لطريقة استخدام تطبيق ماء المقطع:
-
-![شرح طريقة الاستخدام](https://github.com/AMAR223135/maaALManbaa/releases/download/maalmakta/default.png)
-
-## 📖 شرح طريقة استخدام التطبيق
-
-في الصورة التالية شرح لطريقة استخدام تطبيق ماء المقطع:
-
-![شرح طريقة الاستخدام](https://github.com/AMAR223135/maaALManbaa/releases/download/maalmakta/default.png)
-[⬇️ تحميل تطبيق ماء المقطع (APK)](https://github.com/AMAR223135/maaALManbaa/releases/download/maalmakta/app-release.apk)
-
-## 📚 الأدلة والتعليمات
+### 📚 الأدلة والتعليمات
 
 [📘 دليل تثبيت التطبيق (PDF)](https://github.com/AMAR223135/maaALManbaa/releases/download/maalmakta/default.pdf)
 
